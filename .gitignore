@@ -1,1 +1,3 @@
 dev/
+oracle18c-xe-vagrant/.vagrant
+oracle18c-xe-vagrant/*.rpm
