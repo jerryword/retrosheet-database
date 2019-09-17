@@ -6,8 +6,8 @@ A vagrant box that provisions Oracle Database automatically, using Vagrant, an O
 2. Install [Vagrant](https://vagrantup.com/)
 
 ## Getting started
-1. Clone this repository `git clone https://github.com/oracle/vagrant-boxes`
-2. Change into the desired version folder
+~~1. Clone this repository `git clone https://github.com/oracle/vagrant-boxes`~~
+~~2. Change into the desired version folder~~
 3. Download the installation rpm file from OTN into this folder - first time only:
 [https://www.oracle.com/technetwork/database/database-technologies/express-edition/downloads/index.html](https://www.oracle.com/technetwork/database/database-technologies/express-edition/downloads/index.html)
 4. Run `vagrant up`
