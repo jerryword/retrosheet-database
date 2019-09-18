@@ -1,18 +1,8 @@
-create pluggable database rs_pdb admin user pdb_admin identified by chadwick
-    create_file_dest='/opt/oracle/oradata';
-alter pluggable database rs_pdb open;
-alter pluggable database rs_pdb save state;
-alter session set container = rs_pdb;
-create or replace directory rs_dir as '/retrosheet-csv/csv';
-create user rs identified by chadwick;
-grant read, write on directory rs_dir to rs;
-grant connect, create table, unlimited tablespace to rs;
-
 --------------------------------------------------------
 --  File created - Tuesday-September-17-2019   
 --------------------------------------------------------
 --------------------------------------------------------
---  DDL for Table XT_ASG_COMMENT
+--  DDL for Table ASG_COMMENT_XT
 --------------------------------------------------------
 
   CREATE TABLE "RS"."ASG_COMMENT_XT" 
@@ -26,16 +16,16 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                       )
       LOCATION
        ( '*.asg.comment.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_ASG_DAILY
+--  DDL for Table ASG_DAILY_XT
 --------------------------------------------------------
 
   CREATE TABLE "RS"."ASG_DAILY_XT" 
@@ -200,16 +190,16 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                       )
       LOCATION
        ( '*.asg.daily.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_ASG_EVENT
+--  DDL for Table ASG_EVENT_XT
 --------------------------------------------------------
 
   CREATE TABLE "RS"."ASG_EVENT_XT" 
@@ -380,16 +370,16 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                       )
       LOCATION
        ( '*.asg.event.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_ASG_GAME
+--  DDL for Table ASG_GAME_XT
 --------------------------------------------------------
 
   CREATE TABLE "RS"."ASG_GAME_XT" 
@@ -579,16 +569,16 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                       )
       LOCATION
        ( '*.asg.game.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_ASG_SUB
+--  DDL for Table ASG_SUB_XT
 --------------------------------------------------------
 
   CREATE TABLE "RS"."ASG_SUB_XT" 
@@ -609,16 +599,16 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                       )
       LOCATION
        ( '*.asg.sub.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_PARK
+--  DDL for Table PARK_XT
 --------------------------------------------------------
 
   CREATE TABLE "RS"."PARK_XT" 
@@ -638,16 +628,16 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records skip 1
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-               )
+                   )
       LOCATION
        ( 'park.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_PERSON
+--  DDL for Table PERSON_XT
 --------------------------------------------------------
 
   CREATE TABLE "RS"."PERSON_XT" 
@@ -663,11 +653,11 @@ grant connect, create table, unlimited tablespace to rs;
     ( TYPE ORACLE_LOADER
       DEFAULT DIRECTORY "RS_DIR"
       ACCESS PARAMETERS
-      ( records delimited BY '\n' 
+      ( records delimited BY '\n'
            NOBADFILE
            NODISCARDFILE
            NOLOGFILE
-           skip 1 
+           skip 1
            fields csv without embedded record terminators
            missing field VALUES are NULL
            ( person_id CHAR(4000),
@@ -678,14 +668,14 @@ grant connect, create table, unlimited tablespace to rs;
              Coach_debut CHAR(4000),
              Ump_debut CHAR(4000)
            )
-               )
+                   )
       LOCATION
        ( 'person.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_POST_COMMENT
+--  DDL for Table POST_COMMENT_XT
 --------------------------------------------------------
 
   CREATE TABLE "RS"."POST_COMMENT_XT" 
@@ -699,16 +689,16 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                       )
       LOCATION
        ( '*.post.comment.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_POST_DAILY
+--  DDL for Table POST_DAILY_XT
 --------------------------------------------------------
 
   CREATE TABLE "RS"."POST_DAILY_XT" 
@@ -873,16 +863,16 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                       )
       LOCATION
        ( '*.post.daily.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_POST_EVENT
+--  DDL for Table POST_EVENT_XT
 --------------------------------------------------------
 
   CREATE TABLE "RS"."POST_EVENT_XT" 
@@ -1053,16 +1043,16 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                       )
       LOCATION
        ( '*.post.event.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_POST_GAME
+--  DDL for Table POST_GAME_XT
 --------------------------------------------------------
 
   CREATE TABLE "RS"."POST_GAME_XT" 
@@ -1252,16 +1242,16 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                       )
       LOCATION
        ( '*.post.game.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_POST_SUB
+--  DDL for Table POST_SUB_XT
 --------------------------------------------------------
 
   CREATE TABLE "RS"."POST_SUB_XT" 
@@ -1282,16 +1272,16 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                       )
       LOCATION
        ( '*.post.sub.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_REG_COMMENT
+--  DDL for Table REG_COMMENT_XT
 --------------------------------------------------------
 
   CREATE TABLE "RS"."REG_COMMENT_XT" 
@@ -1305,16 +1295,16 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                       )
       LOCATION
        ( '*.regular.comment.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_REG_DAILY
+--  DDL for Table REG_DAILY_XT
 --------------------------------------------------------
 
   CREATE TABLE "RS"."REG_DAILY_XT" 
@@ -1479,16 +1469,16 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                       )
       LOCATION
        ( '*.regular.daily.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_REG_EVENT
+--  DDL for Table REG_EVENT_XT
 --------------------------------------------------------
 
   CREATE TABLE "RS"."REG_EVENT_XT" 
@@ -1659,16 +1649,16 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                       )
       LOCATION
        ( '*.regular.event.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_REG_GAME
+--  DDL for Table REG_GAME_XT
 --------------------------------------------------------
 
   CREATE TABLE "RS"."REG_GAME_XT" 
@@ -1858,16 +1848,16 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                       )
       LOCATION
        ( '*.regular.game.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_REG_SUB
+--  DDL for Table REG_SUB_XT
 --------------------------------------------------------
 
   CREATE TABLE "RS"."REG_SUB_XT" 
@@ -1888,16 +1878,16 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                       )
       LOCATION
        ( '*.regular.sub.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_TEAM
+--  DDL for Table TEAM_XT
 --------------------------------------------------------
 
   CREATE TABLE "RS"."TEAM_XT" 
@@ -1919,9 +1909,9 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records skip 1
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-               )
+                   )
       LOCATION
        ( 'team.csv'
        )
