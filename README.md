@@ -1,5 +1,5 @@
 # retrosheet-database
-Retrosheet data in an Oracle 18c XE database provisioned with Vagrant
+Retrosheet data in an Oracle 18c XE database, auto-provisioned with Vagrant
 ## Instructions
 1. Clone this repository and submodules.  
 `git clone --recurse-submodules https://github.com/jerryword/retrosheet-database.git`  
