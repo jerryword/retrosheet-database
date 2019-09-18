@@ -51,5 +51,5 @@ The following can be customized:
   * You can specify a different time zone using a time zone name (e.g., "America/Los_Angeles") or an offset from GMT (e.g., "Etc/GMT-2"). For more information on specifying time zones, see [List of tz database time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
 
 Some vagrant-specific variables you can change:  
-* Hostname: `NAME = 'oracle18c-xe-vagrant`  
+* Hostname: `NAME = 'oracle18c-xe-vagrant'`  
 * Memory size: `v.memory = 2048`  
