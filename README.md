@@ -3,7 +3,7 @@ Retrosheet data in an Oracle 18c XE database provisioned with Vagrant
 ## Instructions
 1. Clone this repository and submodules.  
 `git clone --recurse-submodules https://github.com/jerryword/retrosheet-database.git`  
-2. Follow the instructions in the oracle18c-xe-vagrant folder.
+2. Follow the instructions in the oracle18c-xe-vagrant README.
 ## PDB description
 * PDB: `rs_pdb`
 * user/password: `rs/chadwick`
