@@ -1,3 +1,13 @@
+create pluggable database rs_pdb admin user pdb_admin identified by chadwick
+    create_file_dest='/opt/oracle/oradata';
+alter pluggable database rs_pdb open;
+alter pluggable database rs_pdb save state;
+alter session set container = rs_pdb;
+create or replace directory rs_dir as '/retrosheet-csv/csv';
+create user rs identified by chadwick;
+grant read, write on directory rs_dir to rs;
+grant connect, create table, unlimited tablespace to rs;
+
 --------------------------------------------------------
 --  File created - Tuesday-September-17-2019   
 --------------------------------------------------------
