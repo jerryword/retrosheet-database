@@ -12,6 +12,6 @@ Retrosheet data in an Oracle 18c XE database provisioned with Vagrant
 * Tables are external, data located at `retrosheet-csv/csv`
 * All column data types are `VARCHAR2(4000)`
 ## References
-https://github.com/chadwickbureau/retrosheet.git
-http://chadwick.sourceforge.net/doc/index.html
-https://www.retrosheet.org
+* https://github.com/chadwickbureau/retrosheet.git  
+* http://chadwick.sourceforge.net/doc/index.html  
+* https://www.retrosheet.org  
