@@ -10,13 +10,12 @@
 * PDB is created during vagrant provisioning from `oracle18c-xe-vagrant/userscripts/create_rs_pdb.sql`  
 * PDB: `rs_pdb`
 * user/password: `rs/chadwick`
-* Table names have the pattern `(ASG/POST/REG)_(COMMENT/DAILY/EVENT/GAME/SUB)_XT`
-* Special treatment is given to regular season daily files (see notes)
+* Table names have the pattern `(ASG|POST|REG)_(COMMENT|DAILY|EVENT|GAME|SUB)_XT`
 * Additional tables: `(PARK/PERSON/TEAM)_XT`
 * Tables are external, data located at `retrosheet-csv/csv`
 * All column data types are `VARCHAR2(4000)`  
 ## Notes
-to-do: add note re: reg daily files...
+* Special treatment is necessary for the regular season daily files `REG_DAILY_(EVX|EDX|EBX)_XT`. The nature of the event (EVX), deduced (EDX), and box score (EBX) records (tables `REG_DAILY_(EVX|EDX|EBX)_XT`) may result in more than one record for a player's daily stats in a single game. These record sets need to be merged by priority (EVX <-- EDX <-- EBX). See https://www.retrosheet.org/events/GameFiles.pdf for an explanation. The script `sql/merge_reg_daily.sql` is an example on how to perform the merge.
 ## References
 * https://github.com/chadwickbureau/retrosheet.git  
 * http://chadwick.sourceforge.net/doc/index.html  
