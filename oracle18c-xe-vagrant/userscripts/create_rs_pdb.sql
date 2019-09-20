@@ -9,13 +9,13 @@ grant read, write on directory rs_dir to rs;
 grant connect, create table, unlimited tablespace to rs;
 
 --------------------------------------------------------
---  File created - Tuesday-September-17-2019   
+--  File created - Thursday-September-19-2019   
 --------------------------------------------------------
 --------------------------------------------------------
---  DDL for Table XT_ASG_COMMENT
+--  DDL for Table ASG_COMMENT_XT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."XT_ASG_COMMENT" 
+  CREATE TABLE "RS"."ASG_COMMENT_XT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"EVENT_ID" VARCHAR2(4000 BYTE), 
 	"COMMENT_TX" VARCHAR2(4000 BYTE)
@@ -26,19 +26,19 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                           )
       LOCATION
        ( '*.asg.comment.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_ASG_DAILY
+--  DDL for Table ASG_DAILY_XT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."XT_ASG_DAILY" 
+  CREATE TABLE "RS"."ASG_DAILY_XT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"GAME_DT" VARCHAR2(4000 BYTE), 
 	"GAME_CT" VARCHAR2(4000 BYTE), 
@@ -200,19 +200,22 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
-       missing field VALUES are NULL
-                   )
+       fields csv without embedded record terminators
+           
+           
+           missing field VALUES are NULL
+
+               )
       LOCATION
-       ( '*.asg.daily.csv'
+       ( '*.EVE.asg.daily.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_ASG_EVENT
+--  DDL for Table ASG_EVENT_XT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."XT_ASG_EVENT" 
+  CREATE TABLE "RS"."ASG_EVENT_XT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"AWAY_TEAM_ID" VARCHAR2(4000 BYTE), 
 	"INN_CT" VARCHAR2(4000 BYTE), 
@@ -380,19 +383,19 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                           )
       LOCATION
        ( '*.asg.event.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_ASG_GAME
+--  DDL for Table ASG_GAME_XT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."XT_ASG_GAME" 
+  CREATE TABLE "RS"."ASG_GAME_XT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"GAME_DT" VARCHAR2(4000 BYTE), 
 	"GAME_CT" VARCHAR2(4000 BYTE), 
@@ -579,19 +582,19 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                           )
       LOCATION
        ( '*.asg.game.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_ASG_SUB
+--  DDL for Table ASG_SUB_XT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."XT_ASG_SUB" 
+  CREATE TABLE "RS"."ASG_SUB_XT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"INN_CT" VARCHAR2(4000 BYTE), 
 	"BAT_HOME_ID" VARCHAR2(4000 BYTE), 
@@ -609,19 +612,19 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                           )
       LOCATION
        ( '*.asg.sub.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_PARK
+--  DDL for Table PARK_XT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."XT_PARK" 
+  CREATE TABLE "RS"."PARK_XT" 
    (	"PARK_ID" VARCHAR2(4000 BYTE), 
 	"NAME" VARCHAR2(4000 BYTE), 
 	"AKA" VARCHAR2(4000 BYTE), 
@@ -638,19 +641,19 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records skip 1
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-               )
+                       )
       LOCATION
        ( 'park.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_PERSON
+--  DDL for Table PERSON_XT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."XT_PERSON" 
+  CREATE TABLE "RS"."PERSON_XT" 
    (	"PERSON_ID" VARCHAR2(4000 BYTE), 
 	"LAST_NAME" VARCHAR2(4000 BYTE), 
 	"FIRST_NAME" VARCHAR2(4000 BYTE), 
@@ -663,11 +666,11 @@ grant connect, create table, unlimited tablespace to rs;
     ( TYPE ORACLE_LOADER
       DEFAULT DIRECTORY "RS_DIR"
       ACCESS PARAMETERS
-      ( records delimited BY '\n' 
+      ( records delimited BY '\n'
            NOBADFILE
            NODISCARDFILE
            NOLOGFILE
-           skip 1 
+           skip 1
            fields csv without embedded record terminators
            missing field VALUES are NULL
            ( person_id CHAR(4000),
@@ -678,17 +681,17 @@ grant connect, create table, unlimited tablespace to rs;
              Coach_debut CHAR(4000),
              Ump_debut CHAR(4000)
            )
-               )
+                       )
       LOCATION
        ( 'person.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_POST_COMMENT
+--  DDL for Table POST_COMMENT_XT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."XT_POST_COMMENT" 
+  CREATE TABLE "RS"."POST_COMMENT_XT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"EVENT_ID" VARCHAR2(4000 BYTE), 
 	"COMMENT_TX" VARCHAR2(4000 BYTE)
@@ -699,19 +702,19 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                           )
       LOCATION
        ( '*.post.comment.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_POST_DAILY
+--  DDL for Table POST_DAILY_XT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."XT_POST_DAILY" 
+  CREATE TABLE "RS"."POST_DAILY_XT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"GAME_DT" VARCHAR2(4000 BYTE), 
 	"GAME_CT" VARCHAR2(4000 BYTE), 
@@ -873,19 +876,22 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
-       missing field VALUES are NULL
-                   )
+       fields csv without embedded record terminators
+           
+           
+           missing field VALUES are NULL
+
+               )
       LOCATION
-       ( '*.post.daily.csv'
+       ( '*.EVE.post.daily.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_POST_EVENT
+--  DDL for Table POST_EVENT_XT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."XT_POST_EVENT" 
+  CREATE TABLE "RS"."POST_EVENT_XT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"AWAY_TEAM_ID" VARCHAR2(4000 BYTE), 
 	"INN_CT" VARCHAR2(4000 BYTE), 
@@ -1053,19 +1059,19 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                           )
       LOCATION
        ( '*.post.event.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_POST_GAME
+--  DDL for Table POST_GAME_XT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."XT_POST_GAME" 
+  CREATE TABLE "RS"."POST_GAME_XT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"GAME_DT" VARCHAR2(4000 BYTE), 
 	"GAME_CT" VARCHAR2(4000 BYTE), 
@@ -1252,19 +1258,19 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                           )
       LOCATION
        ( '*.post.game.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_POST_SUB
+--  DDL for Table POST_SUB_XT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."XT_POST_SUB" 
+  CREATE TABLE "RS"."POST_SUB_XT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"INN_CT" VARCHAR2(4000 BYTE), 
 	"BAT_HOME_ID" VARCHAR2(4000 BYTE), 
@@ -1282,19 +1288,19 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                           )
       LOCATION
        ( '*.post.sub.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_REG_COMMENT
+--  DDL for Table REG_COMMENT_XT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."XT_REG_COMMENT" 
+  CREATE TABLE "RS"."REG_COMMENT_XT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"EVENT_ID" VARCHAR2(4000 BYTE), 
 	"COMMENT_TX" VARCHAR2(4000 BYTE)
@@ -1305,19 +1311,19 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                           )
       LOCATION
        ( '*.regular.comment.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_REG_DAILY
+--  DDL for Table REG_DAILY_EBX_XT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."XT_REG_DAILY" 
+  CREATE TABLE "RS"."REG_DAILY_EBX_XT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"GAME_DT" VARCHAR2(4000 BYTE), 
 	"GAME_CT" VARCHAR2(4000 BYTE), 
@@ -1479,19 +1485,376 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
-       missing field VALUES are NULL
-                   )
+       fields csv without embedded record terminators
+           
+           
+           missing field VALUES are NULL
+
+               )
       LOCATION
-       ( '*.regular.daily.csv'
+       ( '*.EB?.regular.daily.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_REG_EVENT
+--  DDL for Table REG_DAILY_EDX_XT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."XT_REG_EVENT" 
+  CREATE TABLE "RS"."REG_DAILY_EDX_XT" 
+   (	"GAME_ID" VARCHAR2(4000 BYTE), 
+	"GAME_DT" VARCHAR2(4000 BYTE), 
+	"GAME_CT" VARCHAR2(4000 BYTE), 
+	"APPEAR_DT" VARCHAR2(4000 BYTE), 
+	"TEAM_ID" VARCHAR2(4000 BYTE), 
+	"PLAYER_ID" VARCHAR2(4000 BYTE), 
+	"SLOT_CT" VARCHAR2(4000 BYTE), 
+	"SEQ_CT" VARCHAR2(4000 BYTE), 
+	"HOME_FL" VARCHAR2(4000 BYTE), 
+	"OPPONENT_ID" VARCHAR2(4000 BYTE), 
+	"PARK_ID" VARCHAR2(4000 BYTE), 
+	"B_G" VARCHAR2(4000 BYTE), 
+	"B_PA" VARCHAR2(4000 BYTE), 
+	"B_AB" VARCHAR2(4000 BYTE), 
+	"B_R" VARCHAR2(4000 BYTE), 
+	"B_H" VARCHAR2(4000 BYTE), 
+	"B_TB" VARCHAR2(4000 BYTE), 
+	"B_2B" VARCHAR2(4000 BYTE), 
+	"B_3B" VARCHAR2(4000 BYTE), 
+	"B_HR" VARCHAR2(4000 BYTE), 
+	"B_HR4" VARCHAR2(4000 BYTE), 
+	"B_RBI" VARCHAR2(4000 BYTE), 
+	"B_GW" VARCHAR2(4000 BYTE), 
+	"B_BB" VARCHAR2(4000 BYTE), 
+	"B_IBB" VARCHAR2(4000 BYTE), 
+	"B_SO" VARCHAR2(4000 BYTE), 
+	"B_GDP" VARCHAR2(4000 BYTE), 
+	"B_HP" VARCHAR2(4000 BYTE), 
+	"B_SH" VARCHAR2(4000 BYTE), 
+	"B_SF" VARCHAR2(4000 BYTE), 
+	"B_SB" VARCHAR2(4000 BYTE), 
+	"B_CS" VARCHAR2(4000 BYTE), 
+	"B_XI" VARCHAR2(4000 BYTE), 
+	"B_G_DH" VARCHAR2(4000 BYTE), 
+	"B_G_PH" VARCHAR2(4000 BYTE), 
+	"B_G_PR" VARCHAR2(4000 BYTE), 
+	"P_G" VARCHAR2(4000 BYTE), 
+	"P_GS" VARCHAR2(4000 BYTE), 
+	"P_CG" VARCHAR2(4000 BYTE), 
+	"P_SHO" VARCHAR2(4000 BYTE), 
+	"P_GF" VARCHAR2(4000 BYTE), 
+	"P_W" VARCHAR2(4000 BYTE), 
+	"P_L" VARCHAR2(4000 BYTE), 
+	"P_SV" VARCHAR2(4000 BYTE), 
+	"P_OUT" VARCHAR2(4000 BYTE), 
+	"P_TBF" VARCHAR2(4000 BYTE), 
+	"P_AB" VARCHAR2(4000 BYTE), 
+	"P_R" VARCHAR2(4000 BYTE), 
+	"P_ER" VARCHAR2(4000 BYTE), 
+	"P_H" VARCHAR2(4000 BYTE), 
+	"P_TB" VARCHAR2(4000 BYTE), 
+	"P_2B" VARCHAR2(4000 BYTE), 
+	"P_3B" VARCHAR2(4000 BYTE), 
+	"P_HR" VARCHAR2(4000 BYTE), 
+	"P_HR4" VARCHAR2(4000 BYTE), 
+	"P_BB" VARCHAR2(4000 BYTE), 
+	"P_IBB" VARCHAR2(4000 BYTE), 
+	"P_SO" VARCHAR2(4000 BYTE), 
+	"P_GDP" VARCHAR2(4000 BYTE), 
+	"P_HP" VARCHAR2(4000 BYTE), 
+	"P_SH" VARCHAR2(4000 BYTE), 
+	"P_SF" VARCHAR2(4000 BYTE), 
+	"P_XI" VARCHAR2(4000 BYTE), 
+	"P_WP" VARCHAR2(4000 BYTE), 
+	"P_BK" VARCHAR2(4000 BYTE), 
+	"P_IR" VARCHAR2(4000 BYTE), 
+	"P_IRS" VARCHAR2(4000 BYTE), 
+	"P_GO" VARCHAR2(4000 BYTE), 
+	"P_AO" VARCHAR2(4000 BYTE), 
+	"P_PITCH" VARCHAR2(4000 BYTE), 
+	"P_STRIKE" VARCHAR2(4000 BYTE), 
+	"F_P_G" VARCHAR2(4000 BYTE), 
+	"F_P_GS" VARCHAR2(4000 BYTE), 
+	"F_P_OUT" VARCHAR2(4000 BYTE), 
+	"F_P_TC" VARCHAR2(4000 BYTE), 
+	"F_P_PO" VARCHAR2(4000 BYTE), 
+	"F_P_A" VARCHAR2(4000 BYTE), 
+	"F_P_E" VARCHAR2(4000 BYTE), 
+	"F_P_DP" VARCHAR2(4000 BYTE), 
+	"F_P_TP" VARCHAR2(4000 BYTE), 
+	"F_C_G" VARCHAR2(4000 BYTE), 
+	"F_C_GS" VARCHAR2(4000 BYTE), 
+	"F_C_OUT" VARCHAR2(4000 BYTE), 
+	"F_C_TC" VARCHAR2(4000 BYTE), 
+	"F_C_PO" VARCHAR2(4000 BYTE), 
+	"F_C_A" VARCHAR2(4000 BYTE), 
+	"F_C_E" VARCHAR2(4000 BYTE), 
+	"F_C_DP" VARCHAR2(4000 BYTE), 
+	"F_C_TP" VARCHAR2(4000 BYTE), 
+	"F_C_PB" VARCHAR2(4000 BYTE), 
+	"F_C_XI" VARCHAR2(4000 BYTE), 
+	"F_1B_G" VARCHAR2(4000 BYTE), 
+	"F_1B_GS" VARCHAR2(4000 BYTE), 
+	"F_1B_OUT" VARCHAR2(4000 BYTE), 
+	"F_1B_TC" VARCHAR2(4000 BYTE), 
+	"F_1B_PO" VARCHAR2(4000 BYTE), 
+	"F_1B_A" VARCHAR2(4000 BYTE), 
+	"F_1B_E" VARCHAR2(4000 BYTE), 
+	"F_1B_DP" VARCHAR2(4000 BYTE), 
+	"F_1B_TP" VARCHAR2(4000 BYTE), 
+	"F_2B_G" VARCHAR2(4000 BYTE), 
+	"F_2B_GS" VARCHAR2(4000 BYTE), 
+	"F_2B_OUT" VARCHAR2(4000 BYTE), 
+	"F_2B_TC" VARCHAR2(4000 BYTE), 
+	"F_2B_PO" VARCHAR2(4000 BYTE), 
+	"F_2B_A" VARCHAR2(4000 BYTE), 
+	"F_2B_E" VARCHAR2(4000 BYTE), 
+	"F_2B_DP" VARCHAR2(4000 BYTE), 
+	"F_2B_TP" VARCHAR2(4000 BYTE), 
+	"F_3B_G" VARCHAR2(4000 BYTE), 
+	"F_3B_GS" VARCHAR2(4000 BYTE), 
+	"F_3B_OUT" VARCHAR2(4000 BYTE), 
+	"F_3B_TC" VARCHAR2(4000 BYTE), 
+	"F_3B_PO" VARCHAR2(4000 BYTE), 
+	"F_3B_A" VARCHAR2(4000 BYTE), 
+	"F_3B_E" VARCHAR2(4000 BYTE), 
+	"F_3B_DP" VARCHAR2(4000 BYTE), 
+	"F_3B_TP" VARCHAR2(4000 BYTE), 
+	"F_SS_G" VARCHAR2(4000 BYTE), 
+	"F_SS_GS" VARCHAR2(4000 BYTE), 
+	"F_SS_OUT" VARCHAR2(4000 BYTE), 
+	"F_SS_TC" VARCHAR2(4000 BYTE), 
+	"F_SS_PO" VARCHAR2(4000 BYTE), 
+	"F_SS_A" VARCHAR2(4000 BYTE), 
+	"F_SS_E" VARCHAR2(4000 BYTE), 
+	"F_SS_DP" VARCHAR2(4000 BYTE), 
+	"F_SS_TP" VARCHAR2(4000 BYTE), 
+	"F_LF_G" VARCHAR2(4000 BYTE), 
+	"F_LF_GS" VARCHAR2(4000 BYTE), 
+	"F_LF_OUT" VARCHAR2(4000 BYTE), 
+	"F_LF_TC" VARCHAR2(4000 BYTE), 
+	"F_LF_PO" VARCHAR2(4000 BYTE), 
+	"F_LF_A" VARCHAR2(4000 BYTE), 
+	"F_LF_E" VARCHAR2(4000 BYTE), 
+	"F_LF_DP" VARCHAR2(4000 BYTE), 
+	"F_LF_TP" VARCHAR2(4000 BYTE), 
+	"F_CF_G" VARCHAR2(4000 BYTE), 
+	"F_CF_GS" VARCHAR2(4000 BYTE), 
+	"F_CF_OUT" VARCHAR2(4000 BYTE), 
+	"F_CF_TC" VARCHAR2(4000 BYTE), 
+	"F_CF_PO" VARCHAR2(4000 BYTE), 
+	"F_CF_A" VARCHAR2(4000 BYTE), 
+	"F_CF_E" VARCHAR2(4000 BYTE), 
+	"F_CF_DP" VARCHAR2(4000 BYTE), 
+	"F_CF_TP" VARCHAR2(4000 BYTE), 
+	"F_RF_G" VARCHAR2(4000 BYTE), 
+	"F_RF_GS" VARCHAR2(4000 BYTE), 
+	"F_RF_OUT" VARCHAR2(4000 BYTE), 
+	"F_RF_TC" VARCHAR2(4000 BYTE), 
+	"F_RF_PO" VARCHAR2(4000 BYTE), 
+	"F_RF_A" VARCHAR2(4000 BYTE), 
+	"F_RF_E" VARCHAR2(4000 BYTE), 
+	"F_RF_DP" VARCHAR2(4000 BYTE), 
+	"F_RF_TP" VARCHAR2(4000 BYTE)
+   ) 
+   ORGANIZATION EXTERNAL 
+    ( TYPE ORACLE_LOADER
+      DEFAULT DIRECTORY "RS_DIR"
+      ACCESS PARAMETERS
+      ( records field names all files
+       nologfile
+       fields csv without embedded record terminators
+           
+           
+           missing field VALUES are NULL
+
+               )
+      LOCATION
+       ( '*.ED?.regular.daily.csv'
+       )
+    )
+   REJECT LIMIT UNLIMITED ;
+--------------------------------------------------------
+--  DDL for Table REG_DAILY_EVX_XT
+--------------------------------------------------------
+
+  CREATE TABLE "RS"."REG_DAILY_EVX_XT" 
+   (	"GAME_ID" VARCHAR2(4000 BYTE), 
+	"GAME_DT" VARCHAR2(4000 BYTE), 
+	"GAME_CT" VARCHAR2(4000 BYTE), 
+	"APPEAR_DT" VARCHAR2(4000 BYTE), 
+	"TEAM_ID" VARCHAR2(4000 BYTE), 
+	"PLAYER_ID" VARCHAR2(4000 BYTE), 
+	"SLOT_CT" VARCHAR2(4000 BYTE), 
+	"SEQ_CT" VARCHAR2(4000 BYTE), 
+	"HOME_FL" VARCHAR2(4000 BYTE), 
+	"OPPONENT_ID" VARCHAR2(4000 BYTE), 
+	"PARK_ID" VARCHAR2(4000 BYTE), 
+	"B_G" VARCHAR2(4000 BYTE), 
+	"B_PA" VARCHAR2(4000 BYTE), 
+	"B_AB" VARCHAR2(4000 BYTE), 
+	"B_R" VARCHAR2(4000 BYTE), 
+	"B_H" VARCHAR2(4000 BYTE), 
+	"B_TB" VARCHAR2(4000 BYTE), 
+	"B_2B" VARCHAR2(4000 BYTE), 
+	"B_3B" VARCHAR2(4000 BYTE), 
+	"B_HR" VARCHAR2(4000 BYTE), 
+	"B_HR4" VARCHAR2(4000 BYTE), 
+	"B_RBI" VARCHAR2(4000 BYTE), 
+	"B_GW" VARCHAR2(4000 BYTE), 
+	"B_BB" VARCHAR2(4000 BYTE), 
+	"B_IBB" VARCHAR2(4000 BYTE), 
+	"B_SO" VARCHAR2(4000 BYTE), 
+	"B_GDP" VARCHAR2(4000 BYTE), 
+	"B_HP" VARCHAR2(4000 BYTE), 
+	"B_SH" VARCHAR2(4000 BYTE), 
+	"B_SF" VARCHAR2(4000 BYTE), 
+	"B_SB" VARCHAR2(4000 BYTE), 
+	"B_CS" VARCHAR2(4000 BYTE), 
+	"B_XI" VARCHAR2(4000 BYTE), 
+	"B_G_DH" VARCHAR2(4000 BYTE), 
+	"B_G_PH" VARCHAR2(4000 BYTE), 
+	"B_G_PR" VARCHAR2(4000 BYTE), 
+	"P_G" VARCHAR2(4000 BYTE), 
+	"P_GS" VARCHAR2(4000 BYTE), 
+	"P_CG" VARCHAR2(4000 BYTE), 
+	"P_SHO" VARCHAR2(4000 BYTE), 
+	"P_GF" VARCHAR2(4000 BYTE), 
+	"P_W" VARCHAR2(4000 BYTE), 
+	"P_L" VARCHAR2(4000 BYTE), 
+	"P_SV" VARCHAR2(4000 BYTE), 
+	"P_OUT" VARCHAR2(4000 BYTE), 
+	"P_TBF" VARCHAR2(4000 BYTE), 
+	"P_AB" VARCHAR2(4000 BYTE), 
+	"P_R" VARCHAR2(4000 BYTE), 
+	"P_ER" VARCHAR2(4000 BYTE), 
+	"P_H" VARCHAR2(4000 BYTE), 
+	"P_TB" VARCHAR2(4000 BYTE), 
+	"P_2B" VARCHAR2(4000 BYTE), 
+	"P_3B" VARCHAR2(4000 BYTE), 
+	"P_HR" VARCHAR2(4000 BYTE), 
+	"P_HR4" VARCHAR2(4000 BYTE), 
+	"P_BB" VARCHAR2(4000 BYTE), 
+	"P_IBB" VARCHAR2(4000 BYTE), 
+	"P_SO" VARCHAR2(4000 BYTE), 
+	"P_GDP" VARCHAR2(4000 BYTE), 
+	"P_HP" VARCHAR2(4000 BYTE), 
+	"P_SH" VARCHAR2(4000 BYTE), 
+	"P_SF" VARCHAR2(4000 BYTE), 
+	"P_XI" VARCHAR2(4000 BYTE), 
+	"P_WP" VARCHAR2(4000 BYTE), 
+	"P_BK" VARCHAR2(4000 BYTE), 
+	"P_IR" VARCHAR2(4000 BYTE), 
+	"P_IRS" VARCHAR2(4000 BYTE), 
+	"P_GO" VARCHAR2(4000 BYTE), 
+	"P_AO" VARCHAR2(4000 BYTE), 
+	"P_PITCH" VARCHAR2(4000 BYTE), 
+	"P_STRIKE" VARCHAR2(4000 BYTE), 
+	"F_P_G" VARCHAR2(4000 BYTE), 
+	"F_P_GS" VARCHAR2(4000 BYTE), 
+	"F_P_OUT" VARCHAR2(4000 BYTE), 
+	"F_P_TC" VARCHAR2(4000 BYTE), 
+	"F_P_PO" VARCHAR2(4000 BYTE), 
+	"F_P_A" VARCHAR2(4000 BYTE), 
+	"F_P_E" VARCHAR2(4000 BYTE), 
+	"F_P_DP" VARCHAR2(4000 BYTE), 
+	"F_P_TP" VARCHAR2(4000 BYTE), 
+	"F_C_G" VARCHAR2(4000 BYTE), 
+	"F_C_GS" VARCHAR2(4000 BYTE), 
+	"F_C_OUT" VARCHAR2(4000 BYTE), 
+	"F_C_TC" VARCHAR2(4000 BYTE), 
+	"F_C_PO" VARCHAR2(4000 BYTE), 
+	"F_C_A" VARCHAR2(4000 BYTE), 
+	"F_C_E" VARCHAR2(4000 BYTE), 
+	"F_C_DP" VARCHAR2(4000 BYTE), 
+	"F_C_TP" VARCHAR2(4000 BYTE), 
+	"F_C_PB" VARCHAR2(4000 BYTE), 
+	"F_C_XI" VARCHAR2(4000 BYTE), 
+	"F_1B_G" VARCHAR2(4000 BYTE), 
+	"F_1B_GS" VARCHAR2(4000 BYTE), 
+	"F_1B_OUT" VARCHAR2(4000 BYTE), 
+	"F_1B_TC" VARCHAR2(4000 BYTE), 
+	"F_1B_PO" VARCHAR2(4000 BYTE), 
+	"F_1B_A" VARCHAR2(4000 BYTE), 
+	"F_1B_E" VARCHAR2(4000 BYTE), 
+	"F_1B_DP" VARCHAR2(4000 BYTE), 
+	"F_1B_TP" VARCHAR2(4000 BYTE), 
+	"F_2B_G" VARCHAR2(4000 BYTE), 
+	"F_2B_GS" VARCHAR2(4000 BYTE), 
+	"F_2B_OUT" VARCHAR2(4000 BYTE), 
+	"F_2B_TC" VARCHAR2(4000 BYTE), 
+	"F_2B_PO" VARCHAR2(4000 BYTE), 
+	"F_2B_A" VARCHAR2(4000 BYTE), 
+	"F_2B_E" VARCHAR2(4000 BYTE), 
+	"F_2B_DP" VARCHAR2(4000 BYTE), 
+	"F_2B_TP" VARCHAR2(4000 BYTE), 
+	"F_3B_G" VARCHAR2(4000 BYTE), 
+	"F_3B_GS" VARCHAR2(4000 BYTE), 
+	"F_3B_OUT" VARCHAR2(4000 BYTE), 
+	"F_3B_TC" VARCHAR2(4000 BYTE), 
+	"F_3B_PO" VARCHAR2(4000 BYTE), 
+	"F_3B_A" VARCHAR2(4000 BYTE), 
+	"F_3B_E" VARCHAR2(4000 BYTE), 
+	"F_3B_DP" VARCHAR2(4000 BYTE), 
+	"F_3B_TP" VARCHAR2(4000 BYTE), 
+	"F_SS_G" VARCHAR2(4000 BYTE), 
+	"F_SS_GS" VARCHAR2(4000 BYTE), 
+	"F_SS_OUT" VARCHAR2(4000 BYTE), 
+	"F_SS_TC" VARCHAR2(4000 BYTE), 
+	"F_SS_PO" VARCHAR2(4000 BYTE), 
+	"F_SS_A" VARCHAR2(4000 BYTE), 
+	"F_SS_E" VARCHAR2(4000 BYTE), 
+	"F_SS_DP" VARCHAR2(4000 BYTE), 
+	"F_SS_TP" VARCHAR2(4000 BYTE), 
+	"F_LF_G" VARCHAR2(4000 BYTE), 
+	"F_LF_GS" VARCHAR2(4000 BYTE), 
+	"F_LF_OUT" VARCHAR2(4000 BYTE), 
+	"F_LF_TC" VARCHAR2(4000 BYTE), 
+	"F_LF_PO" VARCHAR2(4000 BYTE), 
+	"F_LF_A" VARCHAR2(4000 BYTE), 
+	"F_LF_E" VARCHAR2(4000 BYTE), 
+	"F_LF_DP" VARCHAR2(4000 BYTE), 
+	"F_LF_TP" VARCHAR2(4000 BYTE), 
+	"F_CF_G" VARCHAR2(4000 BYTE), 
+	"F_CF_GS" VARCHAR2(4000 BYTE), 
+	"F_CF_OUT" VARCHAR2(4000 BYTE), 
+	"F_CF_TC" VARCHAR2(4000 BYTE), 
+	"F_CF_PO" VARCHAR2(4000 BYTE), 
+	"F_CF_A" VARCHAR2(4000 BYTE), 
+	"F_CF_E" VARCHAR2(4000 BYTE), 
+	"F_CF_DP" VARCHAR2(4000 BYTE), 
+	"F_CF_TP" VARCHAR2(4000 BYTE), 
+	"F_RF_G" VARCHAR2(4000 BYTE), 
+	"F_RF_GS" VARCHAR2(4000 BYTE), 
+	"F_RF_OUT" VARCHAR2(4000 BYTE), 
+	"F_RF_TC" VARCHAR2(4000 BYTE), 
+	"F_RF_PO" VARCHAR2(4000 BYTE), 
+	"F_RF_A" VARCHAR2(4000 BYTE), 
+	"F_RF_E" VARCHAR2(4000 BYTE), 
+	"F_RF_DP" VARCHAR2(4000 BYTE), 
+	"F_RF_TP" VARCHAR2(4000 BYTE)
+   ) 
+   ORGANIZATION EXTERNAL 
+    ( TYPE ORACLE_LOADER
+      DEFAULT DIRECTORY "RS_DIR"
+      ACCESS PARAMETERS
+      ( records field names all files
+       nologfile
+       fields csv without embedded record terminators
+           
+           
+           missing field VALUES are NULL
+
+               )
+      LOCATION
+       ( '*.EV?.regular.daily.csv'
+       )
+    )
+   REJECT LIMIT UNLIMITED ;
+--------------------------------------------------------
+--  DDL for Table REG_EVENT_XT
+--------------------------------------------------------
+
+  CREATE TABLE "RS"."REG_EVENT_XT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"AWAY_TEAM_ID" VARCHAR2(4000 BYTE), 
 	"INN_CT" VARCHAR2(4000 BYTE), 
@@ -1659,19 +2022,19 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                           )
       LOCATION
        ( '*.regular.event.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_REG_GAME
+--  DDL for Table REG_GAME_XT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."XT_REG_GAME" 
+  CREATE TABLE "RS"."REG_GAME_XT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"GAME_DT" VARCHAR2(4000 BYTE), 
 	"GAME_CT" VARCHAR2(4000 BYTE), 
@@ -1858,19 +2221,19 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                           )
       LOCATION
        ( '*.regular.game.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_REG_SUB
+--  DDL for Table REG_SUB_XT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."XT_REG_SUB" 
+  CREATE TABLE "RS"."REG_SUB_XT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"INN_CT" VARCHAR2(4000 BYTE), 
 	"BAT_HOME_ID" VARCHAR2(4000 BYTE), 
@@ -1888,19 +2251,19 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-                   )
+                           )
       LOCATION
        ( '*.regular.sub.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table XT_TEAM
+--  DDL for Table TEAM_XT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."XT_TEAM" 
+  CREATE TABLE "RS"."TEAM_XT" 
    (	"CURR_FRANCH_ID" VARCHAR2(4000 BYTE), 
 	"FRANCH_ID" VARCHAR2(4000 BYTE), 
 	"LEAGUE" VARCHAR2(4000 BYTE), 
@@ -1919,9 +2282,9 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records skip 1
        nologfile
-       fields csv without embedded record terminators 
+       fields csv without embedded record terminators
        missing field VALUES are NULL
-               )
+                       )
       LOCATION
        ( 'team.csv'
        )
