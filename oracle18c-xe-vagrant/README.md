@@ -50,6 +50,6 @@ The following can be customized:
   * When the host time zone isn't a full hour offset from GMT (e.g., in India and parts of Australia), the guest time zone will be set to UTC.
   * You can specify a different time zone using a time zone name (e.g., "America/Los_Angeles") or an offset from GMT (e.g., "Etc/GMT-2"). For more information on specifying time zones, see [List of tz database time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
 
-Some vagrant-specific variables you can change:  
+Some vagrant specific variables you can change:  
 * Hostname: `NAME = 'oracle18c-xe-vagrant'`  
 * Memory size: `v.memory = 2048`  
