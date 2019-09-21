@@ -8,7 +8,7 @@
 2. Follow the instructions in the oracle18c-xe-vagrant README.
 ## PDB description
 * PDB is created during vagrant provisioning from `oracle18c-xe-vagrant/userscripts/create_rs_pdb.sql`  
-* PDB: `rs_pdb`
+* PDB: `rs_pdb_xt`
 * user/password: `rs/chadwick`
 * Table names have the pattern `(ASG|POST|REG)_(COMMENT|DAILY|EVENT|GAME|SUB)_XT`
 * Additional tables: `(PARK|PERSON|TEAM)_XT`
