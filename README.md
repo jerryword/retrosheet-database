@@ -7,11 +7,11 @@
 `git clone --recurse-submodules https://github.com/jerryword/retrosheet-database.git`  
 2. Follow the instructions in the oracle18c-xe-vagrant README.
 ## PDB description
-* PDB is created during vagrant provisioning from `oracle18c-xe-vagrant/userscripts/create_rs_pdb_xt.sql`  
-* PDB: `rs_pdb_xt`
+* PDB is created during vagrant provisioning from `oracle18c-xe-vagrant/userscripts/create_rs_pdb.sql`  
+* PDB: `rs_pdb`
 * user/password: `rs/chadwick`
-* Table names have the pattern `(ASG|POST|REG)_(COMMENT|DAILY|EVENT|GAME|SUB)_XT`
-* Additional tables: `(PARK|PERSON|TEAM)_XT`
+* Table names have the pattern `XT_(ASG|POST|REG)_(COMMENT|DAILY|EVENT|GAME|SUB)`
+* Additional tables: `XT_(PARK|PERSON|TEAM)`
 * Tables are external, data located at `retrosheet-csv/csv`
 * All column data types are `VARCHAR2(4000)`  
 ## Notes
