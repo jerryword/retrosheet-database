@@ -201,10 +201,7 @@ grant connect, create table, unlimited tablespace to rs;
       ( records field names all files
        nologfile
        fields csv without embedded record terminators
-           
-           
-           missing field VALUES are NULL
-
+       missing field VALUES are NULL
                )
       LOCATION
        ( '*.EVE.asg.daily.csv'
@@ -877,10 +874,7 @@ grant connect, create table, unlimited tablespace to rs;
       ( records field names all files
        nologfile
        fields csv without embedded record terminators
-           
-           
            missing field VALUES are NULL
-
                )
       LOCATION
        ( '*.EVE.post.daily.csv'
@@ -1485,11 +1479,8 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators
-           
-           
+       fields csv without embedded record terminators    
            missing field VALUES are NULL
-
                )
       LOCATION
        ( '*.EB?.regular.daily.csv'
@@ -1662,11 +1653,8 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators
-           
-           
+       fields csv without embedded record terminators    
            missing field VALUES are NULL
-
                )
       LOCATION
        ( '*.ED?.regular.daily.csv'
@@ -1839,11 +1827,8 @@ grant connect, create table, unlimited tablespace to rs;
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
-       fields csv without embedded record terminators
-           
-           
+       fields csv without embedded record terminators         
            missing field VALUES are NULL
-
                )
       LOCATION
        ( '*.EV?.regular.daily.csv'
