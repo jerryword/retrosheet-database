@@ -3,10 +3,10 @@ This script will merge the regular season daily EVX, EDX, and EBX tables
 in the correct order for accurate counts.
 */
 
-create table rs.reg_daily as select * from rs.reg_daily_evx_xt;
+create table rs.reg_daily as select * from rs.xt_reg_daily_evx;
 
 merge into rs.reg_daily d
-using rs.reg_daily_edx_xt edx
+using rs.xt_reg_daily_edx edx
 on (d.game_id = edx.game_id
     and d.game_ct = edx.game_ct
     and d.player_id = edx.player_id
@@ -329,7 +329,7 @@ edx.F_RF_TP
 );
 
 merge into rs.reg_daily d
-using rs.reg_daily_ebx_xt ebx
+using rs.xt_reg_daily_ebx ebx
 on (d.game_id = ebx.game_id
     and d.game_ct = ebx.game_ct
     and d.player_id = ebx.player_id

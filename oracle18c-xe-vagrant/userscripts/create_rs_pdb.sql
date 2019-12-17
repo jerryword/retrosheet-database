@@ -12,10 +12,10 @@ grant connect, create table, unlimited tablespace to rs;
 --  File created - Thursday-September-19-2019   
 --------------------------------------------------------
 --------------------------------------------------------
---  DDL for Table xt_asg_comment
+--  DDL for Table XT_ASG_COMMENT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."xt_asg_comment" 
+  CREATE TABLE "RS"."XT_ASG_COMMENT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"EVENT_ID" VARCHAR2(4000 BYTE), 
 	"COMMENT_TX" VARCHAR2(4000 BYTE)
@@ -35,10 +35,10 @@ grant connect, create table, unlimited tablespace to rs;
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table xt_asg_daily
+--  DDL for Table XT_ASG_DAILY
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."xt_asg_daily" 
+  CREATE TABLE "RS"."XT_ASG_DAILY" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"GAME_DT" VARCHAR2(4000 BYTE), 
 	"GAME_CT" VARCHAR2(4000 BYTE), 
@@ -212,10 +212,10 @@ grant connect, create table, unlimited tablespace to rs;
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table xt_asg_event
+--  DDL for Table XT_ASG_EVENT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."xt_asg_event" 
+  CREATE TABLE "RS"."XT_ASG_EVENT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"AWAY_TEAM_ID" VARCHAR2(4000 BYTE), 
 	"INN_CT" VARCHAR2(4000 BYTE), 
@@ -392,10 +392,10 @@ grant connect, create table, unlimited tablespace to rs;
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table xt_asg_game
+--  DDL for Table XT_ASG_GAME
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."xt_asg_game" 
+  CREATE TABLE "RS"."XT_ASG_GAME" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"GAME_DT" VARCHAR2(4000 BYTE), 
 	"GAME_CT" VARCHAR2(4000 BYTE), 
@@ -591,10 +591,10 @@ grant connect, create table, unlimited tablespace to rs;
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table xt_asg_sub
+--  DDL for Table XT_ASG_SUB
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."xt_asg_sub" 
+  CREATE TABLE "RS"."XT_ASG_SUB" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"INN_CT" VARCHAR2(4000 BYTE), 
 	"BAT_HOME_ID" VARCHAR2(4000 BYTE), 
@@ -621,10 +621,10 @@ grant connect, create table, unlimited tablespace to rs;
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table xt_park
+--  DDL for Table XT_PARK
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."xt_park" 
+  CREATE TABLE "RS"."XT_PARK" 
    (	"PARK_ID" VARCHAR2(4000 BYTE), 
 	"NAME" VARCHAR2(4000 BYTE), 
 	"AKA" VARCHAR2(4000 BYTE), 
@@ -650,10 +650,10 @@ grant connect, create table, unlimited tablespace to rs;
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table xt_person
+--  DDL for Table XT_PERSON
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."xt_person" 
+  CREATE TABLE "RS"."XT_PERSON" 
    (	"PERSON_ID" VARCHAR2(4000 BYTE), 
 	"LAST_NAME" VARCHAR2(4000 BYTE), 
 	"FIRST_NAME" VARCHAR2(4000 BYTE), 
@@ -688,10 +688,10 @@ grant connect, create table, unlimited tablespace to rs;
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table xt_post_comment
+--  DDL for Table XT_POST_COMMENT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."xt_post_comment" 
+  CREATE TABLE "RS"."XT_POST_COMMENT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"EVENT_ID" VARCHAR2(4000 BYTE), 
 	"COMMENT_TX" VARCHAR2(4000 BYTE)
@@ -711,10 +711,10 @@ grant connect, create table, unlimited tablespace to rs;
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table xt_post_daily
+--  DDL for Table XT_POST_DAILY
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."xt_post_daily" 
+  CREATE TABLE "RS"."XT_POST_DAILY" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"GAME_DT" VARCHAR2(4000 BYTE), 
 	"GAME_CT" VARCHAR2(4000 BYTE), 
@@ -888,10 +888,10 @@ grant connect, create table, unlimited tablespace to rs;
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table xt_post_event
+--  DDL for Table XT_POST_EVENT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."xt_post_event" 
+  CREATE TABLE "RS"."XT_POST_EVENT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"AWAY_TEAM_ID" VARCHAR2(4000 BYTE), 
 	"INN_CT" VARCHAR2(4000 BYTE), 
@@ -1068,10 +1068,10 @@ grant connect, create table, unlimited tablespace to rs;
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table xt_post_game
+--  DDL for Table XT_POST_GAME
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."xt_post_game" 
+  CREATE TABLE "RS"."XT_POST_GAME" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"GAME_DT" VARCHAR2(4000 BYTE), 
 	"GAME_CT" VARCHAR2(4000 BYTE), 
@@ -1267,10 +1267,10 @@ grant connect, create table, unlimited tablespace to rs;
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table xt_post_sub
+--  DDL for Table XT_POST_SUB
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."xt_post_sub" 
+  CREATE TABLE "RS"."XT_POST_SUB" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"INN_CT" VARCHAR2(4000 BYTE), 
 	"BAT_HOME_ID" VARCHAR2(4000 BYTE), 
@@ -1297,10 +1297,10 @@ grant connect, create table, unlimited tablespace to rs;
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table xt_reg_comment
+--  DDL for Table XT_REG_COMMENT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."xt_reg_comment" 
+  CREATE TABLE "RS"."XT_REG_COMMENT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"EVENT_ID" VARCHAR2(4000 BYTE), 
 	"COMMENT_TX" VARCHAR2(4000 BYTE)
@@ -1320,10 +1320,10 @@ grant connect, create table, unlimited tablespace to rs;
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table xt_reg_daily_ebx
+--  DDL for Table XT_REG_DAILY_EBX
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."xt_reg_daily_ebx" 
+  CREATE TABLE "RS"."XT_REG_DAILY_EBX" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"GAME_DT" VARCHAR2(4000 BYTE), 
 	"GAME_CT" VARCHAR2(4000 BYTE), 
@@ -1497,10 +1497,10 @@ grant connect, create table, unlimited tablespace to rs;
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table xt_reg_daily_edx
+--  DDL for Table XT_REG_DAILY_EDX
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."xt_reg_daily_edx" 
+  CREATE TABLE "RS"."XT_REG_DAILY_EDX" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"GAME_DT" VARCHAR2(4000 BYTE), 
 	"GAME_CT" VARCHAR2(4000 BYTE), 
@@ -1674,10 +1674,10 @@ grant connect, create table, unlimited tablespace to rs;
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table xt_reg_daily_evx
+--  DDL for Table XT_REG_DAILY_EVX
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."xt_reg_daily_evx" 
+  CREATE TABLE "RS"."XT_REG_DAILY_EVX" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"GAME_DT" VARCHAR2(4000 BYTE), 
 	"GAME_CT" VARCHAR2(4000 BYTE), 
@@ -1851,10 +1851,10 @@ grant connect, create table, unlimited tablespace to rs;
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table xt_reg_event
+--  DDL for Table XT_REG_EVENT
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."xt_reg_event" 
+  CREATE TABLE "RS"."XT_REG_EVENT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"AWAY_TEAM_ID" VARCHAR2(4000 BYTE), 
 	"INN_CT" VARCHAR2(4000 BYTE), 
@@ -2031,10 +2031,10 @@ grant connect, create table, unlimited tablespace to rs;
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table xt_reg_game
+--  DDL for Table XT_REG_GAME
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."xt_reg_game" 
+  CREATE TABLE "RS"."XT_REG_GAME" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"GAME_DT" VARCHAR2(4000 BYTE), 
 	"GAME_CT" VARCHAR2(4000 BYTE), 
@@ -2230,10 +2230,10 @@ grant connect, create table, unlimited tablespace to rs;
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table xt_reg_sub
+--  DDL for Table XT_REG_SUB
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."xt_reg_sub" 
+  CREATE TABLE "RS"."XT_REG_SUB" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"INN_CT" VARCHAR2(4000 BYTE), 
 	"BAT_HOME_ID" VARCHAR2(4000 BYTE), 
@@ -2260,10 +2260,10 @@ grant connect, create table, unlimited tablespace to rs;
     )
    REJECT LIMIT UNLIMITED ;
 --------------------------------------------------------
---  DDL for Table xt_team
+--  DDL for Table XT_TEAM
 --------------------------------------------------------
 
-  CREATE TABLE "RS"."xt_team" 
+  CREATE TABLE "RS"."XT_TEAM" 
    (	"CURR_FRANCH_ID" VARCHAR2(4000 BYTE), 
 	"FRANCH_ID" VARCHAR2(4000 BYTE), 
 	"LEAGUE" VARCHAR2(4000 BYTE), 
