@@ -1,3 +1,5 @@
 dev/
 oracle18c-xe-vagrant/.vagrant
 oracle18c-xe-vagrant/*.rpm
+oracle18c-xe-vagrant/agent
+*.log
