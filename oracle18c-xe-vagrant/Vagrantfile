@@ -82,5 +82,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Synced folders
   config.vm.synced_folder "../retrosheet-csv/", "/retrosheet-csv", mount_options: ["uid=54321", "gid=54321"]
+  config.vm.synced_folder "../baseballdatabank/", "/baseballdatabank", mount_options: ["uid=54321", "gid=54321"]
+  config.vm.synced_folder "../retrosheet/", "/retrosheet", mount_options: ["uid=54321", "gid=54321"]
 
 end
