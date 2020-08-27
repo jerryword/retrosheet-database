@@ -4,3 +4,6 @@
 [submodule "baseballdatabank"]
 	path = baseballdatabank
 	url = https://github.com/jerryword/baseballdatabank.git
+[submodule "retrosheet"]
+	path = retrosheet
+	url = https://github.com/jerryword/retrosheet.git
