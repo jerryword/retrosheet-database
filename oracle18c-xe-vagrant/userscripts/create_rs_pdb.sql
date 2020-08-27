@@ -3,9 +3,13 @@ create pluggable database rs_pdb admin user pdb_admin identified by chadwick
 alter pluggable database rs_pdb open;
 alter pluggable database rs_pdb save state;
 alter session set container = rs_pdb;
-create or replace directory rs_dir as '/retrosheet-csv/csv';
+create or replace directory CSV_DIR as '/retrosheet-csv/csv';
+create or replace directory BBDB_DIR as '/baseballdatabank/core';
+CREATE OR REPLACE DIRECTORY PARK_DIR AS '/retrosheet/misc';
 create user rs identified by chadwick;
-grant read, write on directory rs_dir to rs;
+grant read, write on directory CSV_DIR to rs;
+grant read, write on directory BBDB_DIR to rs;
+grant read, write on directory PARK_DIR to rs;
 grant connect, create table, unlimited tablespace to rs;
 
 --------------------------------------------------------
@@ -22,7 +26,7 @@ grant connect, create table, unlimited tablespace to rs;
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
-      DEFAULT DIRECTORY "RS_DIR"
+      DEFAULT DIRECTORY "CSV_DIR"
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
@@ -196,7 +200,7 @@ grant connect, create table, unlimited tablespace to rs;
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
-      DEFAULT DIRECTORY "RS_DIR"
+      DEFAULT DIRECTORY "CSV_DIR"
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
@@ -376,7 +380,7 @@ grant connect, create table, unlimited tablespace to rs;
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
-      DEFAULT DIRECTORY "RS_DIR"
+      DEFAULT DIRECTORY "CSV_DIR"
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
@@ -575,7 +579,7 @@ grant connect, create table, unlimited tablespace to rs;
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
-      DEFAULT DIRECTORY "RS_DIR"
+      DEFAULT DIRECTORY "CSV_DIR"
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
@@ -605,7 +609,7 @@ grant connect, create table, unlimited tablespace to rs;
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
-      DEFAULT DIRECTORY "RS_DIR"
+      DEFAULT DIRECTORY "CSV_DIR"
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
@@ -622,27 +626,42 @@ grant connect, create table, unlimited tablespace to rs;
 --------------------------------------------------------
 
   CREATE TABLE "RS"."XT_PARK" 
-   (	"PARK_ID" VARCHAR2(4000 BYTE), 
+   (	"PARKID" VARCHAR2(4000 BYTE), 
 	"NAME" VARCHAR2(4000 BYTE), 
 	"AKA" VARCHAR2(4000 BYTE), 
 	"CITY" VARCHAR2(4000 BYTE), 
 	"STATE" VARCHAR2(4000 BYTE), 
-	"START_DT" VARCHAR2(4000 BYTE), 
-	"END_DT" VARCHAR2(4000 BYTE), 
+	"START_DATE" VARCHAR2(4000 BYTE), 
+	"END_DATE" VARCHAR2(4000 BYTE), 
 	"LEAGUE" VARCHAR2(4000 BYTE), 
 	"NOTES" VARCHAR2(4000 BYTE)
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
-      DEFAULT DIRECTORY "RS_DIR"
+      DEFAULT DIRECTORY "PARK_DIR"
       ACCESS PARAMETERS
-      ( records skip 1
-       nologfile
-       fields csv without embedded record terminators
-       missing field VALUES are NULL
-                       )
+      ( records delimited BY '\n' 
+           NOBADFILE
+           NODISCARDFILE
+           NOLOGFILE
+           skip 1 
+           fields terminated BY ','
+           OPTIONALLY ENCLOSED BY '"' AND '"'
+           lrtrim
+           missing field VALUES are NULL
+           ( PARKID CHAR(4000),
+             NAME CHAR(4000),
+             AKA CHAR(4000),
+             CITY CHAR(4000),
+             STATE CHAR(4000),
+             START_DATE CHAR(4000),
+             END_DATE CHAR(4000),
+             LEAGUE CHAR(4000),
+             NOTES CHAR(4000)
+           )
+           )
       LOCATION
-       ( 'park.csv'
+       ( 'parkcode.txt'
        )
     )
    REJECT LIMIT UNLIMITED ;
@@ -651,36 +670,72 @@ grant connect, create table, unlimited tablespace to rs;
 --------------------------------------------------------
 
   CREATE TABLE "RS"."XT_PERSON" 
-   (	"PERSON_ID" VARCHAR2(4000 BYTE), 
-	"LAST_NAME" VARCHAR2(4000 BYTE), 
-	"FIRST_NAME" VARCHAR2(4000 BYTE), 
-	"PLAYER_DEBUT" VARCHAR2(4000 BYTE), 
-	"MGR_DEBUT" VARCHAR2(4000 BYTE), 
-	"COACH_DEBUT" VARCHAR2(4000 BYTE), 
-	"UMP_DEBUT" VARCHAR2(4000 BYTE)
+   (	"PLAYERID" VARCHAR2(4000 BYTE), 
+	"BIRTHYEAR" VARCHAR2(4000 BYTE), 
+	"BIRTHMONTH" VARCHAR2(4000 BYTE), 
+	"BIRTHDAY" VARCHAR2(4000 BYTE), 
+	"BIRTHCOUNTRY" VARCHAR2(4000 BYTE), 
+	"BIRTHSTATE" VARCHAR2(4000 BYTE), 
+	"BIRTHCITY" VARCHAR2(4000 BYTE), 
+	"DEATHYEAR" VARCHAR2(4000 BYTE), 
+	"DEATHMONTH" VARCHAR2(4000 BYTE), 
+	"DEATHDAY" VARCHAR2(4000 BYTE), 
+	"DEATHCOUNTRY" VARCHAR2(4000 BYTE), 
+	"DEATHSTATE" VARCHAR2(4000 BYTE), 
+	"DEATHCITY" VARCHAR2(4000 BYTE), 
+	"NAMEFIRST" VARCHAR2(4000 BYTE), 
+	"NAMELAST" VARCHAR2(4000 BYTE), 
+	"NAMEGIVEN" VARCHAR2(4000 BYTE), 
+	"WEIGHT" VARCHAR2(4000 BYTE), 
+	"HEIGHT" VARCHAR2(4000 BYTE), 
+	"BATS" VARCHAR2(4000 BYTE), 
+	"THROWS" VARCHAR2(4000 BYTE), 
+	"DEBUT" VARCHAR2(4000 BYTE), 
+	"FINALGAME" VARCHAR2(4000 BYTE), 
+	"RETROID" VARCHAR2(4000 BYTE), 
+	"BBREFID" VARCHAR2(4000 BYTE)
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
-      DEFAULT DIRECTORY "RS_DIR"
+      DEFAULT DIRECTORY "BBDB_DIR"
       ACCESS PARAMETERS
-      ( records delimited BY '\n'
+      ( records delimited BY '\n' 
            NOBADFILE
            NODISCARDFILE
            NOLOGFILE
-           skip 1
-           fields csv without embedded record terminators
+           skip 1 
+           fields terminated BY ','
+           OPTIONALLY ENCLOSED BY '"' AND '"'
+           lrtrim
            missing field VALUES are NULL
-           ( person_id CHAR(4000),
-             Last_name CHAR(4000),
-             First_name CHAR(4000),
-             Player_debut CHAR(4000),
-             Mgr_debut CHAR(4000),
-             Coach_debut CHAR(4000),
-             Ump_debut CHAR(4000)
+           ( playerID CHAR(4000),
+             birthYear CHAR(4000),
+             birthMonth CHAR(4000),
+             birthDay CHAR(4000),
+             birthCountry CHAR(4000),
+             birthState CHAR(4000),
+             birthCity CHAR(4000),
+             deathYear CHAR(4000),
+             deathMonth CHAR(4000),
+             deathDay CHAR(4000),
+             deathCountry CHAR(4000),
+             deathState CHAR(4000),
+             deathCity CHAR(4000),
+             nameFirst CHAR(4000),
+             nameLast CHAR(4000),
+             nameGiven CHAR(4000),
+             weight CHAR(4000),
+             height CHAR(4000),
+             bats CHAR(4000),
+             throws CHAR(4000),
+             debut CHAR(4000),
+             finalGame CHAR(4000),
+             retroID CHAR(4000),
+             bbrefID CHAR(4000)
            )
-                       )
+               )
       LOCATION
-       ( 'person.csv'
+       ( 'People.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
@@ -695,7 +750,7 @@ grant connect, create table, unlimited tablespace to rs;
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
-      DEFAULT DIRECTORY "RS_DIR"
+      DEFAULT DIRECTORY "CSV_DIR"
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
@@ -869,7 +924,7 @@ grant connect, create table, unlimited tablespace to rs;
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
-      DEFAULT DIRECTORY "RS_DIR"
+      DEFAULT DIRECTORY "CSV_DIR"
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
@@ -1049,7 +1104,7 @@ grant connect, create table, unlimited tablespace to rs;
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
-      DEFAULT DIRECTORY "RS_DIR"
+      DEFAULT DIRECTORY "CSV_DIR"
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
@@ -1248,7 +1303,7 @@ grant connect, create table, unlimited tablespace to rs;
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
-      DEFAULT DIRECTORY "RS_DIR"
+      DEFAULT DIRECTORY "CSV_DIR"
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
@@ -1278,7 +1333,7 @@ grant connect, create table, unlimited tablespace to rs;
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
-      DEFAULT DIRECTORY "RS_DIR"
+      DEFAULT DIRECTORY "CSV_DIR"
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
@@ -1301,7 +1356,7 @@ grant connect, create table, unlimited tablespace to rs;
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
-      DEFAULT DIRECTORY "RS_DIR"
+      DEFAULT DIRECTORY "CSV_DIR"
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
@@ -1475,7 +1530,7 @@ grant connect, create table, unlimited tablespace to rs;
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
-      DEFAULT DIRECTORY "RS_DIR"
+      DEFAULT DIRECTORY "CSV_DIR"
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
@@ -1649,7 +1704,7 @@ grant connect, create table, unlimited tablespace to rs;
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
-      DEFAULT DIRECTORY "RS_DIR"
+      DEFAULT DIRECTORY "CSV_DIR"
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
@@ -1823,7 +1878,7 @@ grant connect, create table, unlimited tablespace to rs;
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
-      DEFAULT DIRECTORY "RS_DIR"
+      DEFAULT DIRECTORY "CSV_DIR"
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
@@ -2003,7 +2058,7 @@ grant connect, create table, unlimited tablespace to rs;
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
-      DEFAULT DIRECTORY "RS_DIR"
+      DEFAULT DIRECTORY "CSV_DIR"
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
@@ -2202,7 +2257,7 @@ grant connect, create table, unlimited tablespace to rs;
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
-      DEFAULT DIRECTORY "RS_DIR"
+      DEFAULT DIRECTORY "CSV_DIR"
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
@@ -2232,7 +2287,7 @@ grant connect, create table, unlimited tablespace to rs;
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
-      DEFAULT DIRECTORY "RS_DIR"
+      DEFAULT DIRECTORY "CSV_DIR"
       ACCESS PARAMETERS
       ( records field names all files
        nologfile
@@ -2249,29 +2304,154 @@ grant connect, create table, unlimited tablespace to rs;
 --------------------------------------------------------
 
   CREATE TABLE "RS"."XT_TEAM" 
-   (	"CURR_FRANCH_ID" VARCHAR2(4000 BYTE), 
-	"FRANCH_ID" VARCHAR2(4000 BYTE), 
-	"LEAGUE" VARCHAR2(4000 BYTE), 
-	"DIVISION" VARCHAR2(4000 BYTE), 
-	"LOCATION" VARCHAR2(4000 BYTE), 
-	"NICKNAME" VARCHAR2(4000 BYTE), 
-	"ALT_NICKNAME" VARCHAR2(4000 BYTE), 
-	"START_DT" VARCHAR2(4000 BYTE), 
-	"END_DT" VARCHAR2(4000 BYTE), 
-	"CITY" VARCHAR2(4000 BYTE), 
-	"STATE" VARCHAR2(4000 BYTE)
+   (	"YEARID" VARCHAR2(4000 BYTE), 
+	"LGID" VARCHAR2(4000 BYTE), 
+	"TEAMID" VARCHAR2(4000 BYTE), 
+	"FRANCHID" VARCHAR2(4000 BYTE), 
+	"DIVID" VARCHAR2(4000 BYTE), 
+	"Rank" VARCHAR2(4000 BYTE), 
+	"G" VARCHAR2(4000 BYTE), 
+	"GHOME" VARCHAR2(4000 BYTE), 
+	"W" VARCHAR2(4000 BYTE), 
+	"L" VARCHAR2(4000 BYTE), 
+	"DIVWIN" VARCHAR2(4000 BYTE), 
+	"WCWIN" VARCHAR2(4000 BYTE), 
+	"LGWIN" VARCHAR2(4000 BYTE), 
+	"WSWIN" VARCHAR2(4000 BYTE), 
+	"R" VARCHAR2(4000 BYTE), 
+	"AB" VARCHAR2(4000 BYTE), 
+	"H" VARCHAR2(4000 BYTE), 
+	"2B" VARCHAR2(4000 BYTE), 
+	"3B" VARCHAR2(4000 BYTE), 
+	"HR" VARCHAR2(4000 BYTE), 
+	"BB" VARCHAR2(4000 BYTE), 
+	"SO" VARCHAR2(4000 BYTE), 
+	"SB" VARCHAR2(4000 BYTE), 
+	"CS" VARCHAR2(4000 BYTE), 
+	"HBP" VARCHAR2(4000 BYTE), 
+	"SF" VARCHAR2(4000 BYTE), 
+	"RA" VARCHAR2(4000 BYTE), 
+	"ER" VARCHAR2(4000 BYTE), 
+	"ERA" VARCHAR2(4000 BYTE), 
+	"CG" VARCHAR2(4000 BYTE), 
+	"SHO" VARCHAR2(4000 BYTE), 
+	"SV" VARCHAR2(4000 BYTE), 
+	"IPOUTS" VARCHAR2(4000 BYTE), 
+	"HA" VARCHAR2(4000 BYTE), 
+	"HRA" VARCHAR2(4000 BYTE), 
+	"BBA" VARCHAR2(4000 BYTE), 
+	"SOA" VARCHAR2(4000 BYTE), 
+	"E" VARCHAR2(4000 BYTE), 
+	"DP" VARCHAR2(4000 BYTE), 
+	"FP" VARCHAR2(4000 BYTE), 
+	"NAME" VARCHAR2(4000 BYTE), 
+	"PARK" VARCHAR2(4000 BYTE), 
+	"ATTENDANCE" VARCHAR2(4000 BYTE), 
+	"BPF" VARCHAR2(4000 BYTE), 
+	"PPF" VARCHAR2(4000 BYTE), 
+	"TEAMIDBR" VARCHAR2(4000 BYTE), 
+	"TEAMIDLAHMAN45" VARCHAR2(4000 BYTE), 
+	"TEAMIDRETRO" VARCHAR2(4000 BYTE)
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
-      DEFAULT DIRECTORY "RS_DIR"
+      DEFAULT DIRECTORY "BBDB_DIR"
       ACCESS PARAMETERS
-      ( records skip 1
-       nologfile
-       fields csv without embedded record terminators
-       missing field VALUES are NULL
-                       )
+      ( records delimited BY '\n' 
+           NOBADFILE
+           NODISCARDFILE
+           NOLOGFILE
+           skip 1 
+           fields terminated BY ','
+           OPTIONALLY ENCLOSED BY '"' AND '"'
+           lrtrim
+           missing field VALUES are NULL
+           ( yearID CHAR(4000),
+             lgID CHAR(4000),
+             teamID CHAR(4000),
+             franchID CHAR(4000),
+             divID CHAR(4000),
+             "Rank" CHAR(4000),
+             G CHAR(4000),
+             Ghome CHAR(4000),
+             W CHAR(4000),
+             L CHAR(4000),
+             DivWin CHAR(4000),
+             WCWin CHAR(4000),
+             LgWin CHAR(4000),
+             WSWin CHAR(4000),
+             R CHAR(4000),
+             AB CHAR(4000),
+             H CHAR(4000),
+             "2B" CHAR(4000),
+             "3B" CHAR(4000),
+             HR CHAR(4000),
+             BB CHAR(4000),
+             SO CHAR(4000),
+             SB CHAR(4000),
+             CS CHAR(4000),
+             HBP CHAR(4000),
+             SF CHAR(4000),
+             RA CHAR(4000),
+             ER CHAR(4000),
+             ERA CHAR(4000),
+             CG CHAR(4000),
+             SHO CHAR(4000),
+             SV CHAR(4000),
+             IPouts CHAR(4000),
+             HA CHAR(4000),
+             HRA CHAR(4000),
+             BBA CHAR(4000),
+             SOA CHAR(4000),
+             E CHAR(4000),
+             DP CHAR(4000),
+             FP CHAR(4000),
+             name CHAR(4000),
+             park CHAR(4000),
+             attendance CHAR(4000),
+             BPF CHAR(4000),
+             PPF CHAR(4000),
+             teamIDBR CHAR(4000),
+             teamIDlahman45 CHAR(4000),
+             teamIDretro CHAR(4000)
+           )
+           )
       LOCATION
-       ( 'team.csv'
+       ( 'Teams.csv'
+       )
+    )
+   REJECT LIMIT UNLIMITED ;
+--------------------------------------------------------
+--  DDL for Table XT_FRANCH
+--------------------------------------------------------
+
+  CREATE TABLE "RS"."XT_FRANCH" 
+   (	"FRANCHID" VARCHAR2(4000 BYTE), 
+	"FRANCHNAME" VARCHAR2(4000 BYTE), 
+	"ACTIVE" VARCHAR2(4000 BYTE), 
+	"NAASSOC" VARCHAR2(4000 BYTE)
+   ) 
+   ORGANIZATION EXTERNAL 
+    ( TYPE ORACLE_LOADER
+      DEFAULT DIRECTORY "BBDB_DIR"
+      ACCESS PARAMETERS
+      ( records delimited BY '\n' 
+           NOBADFILE
+           NODISCARDFILE
+           NOLOGFILE
+           skip 1 
+           fields terminated BY ','
+           OPTIONALLY ENCLOSED BY '"' AND '"'
+           lrtrim
+           missing field VALUES are NULL
+           ( franchID CHAR(4000),
+             franchName CHAR(4000),
+             active CHAR(4000),
+             NAassoc CHAR(4000)
+           )
+           )
+      LOCATION
+       ( 'TeamsFranchises.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
