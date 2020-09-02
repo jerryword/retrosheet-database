@@ -10,7 +10,7 @@ create user rs identified by chadwick;
 grant read, write on directory CSV_DIR to rs;
 grant read, write on directory BBDB_DIR to rs;
 grant read, write on directory PARK_DIR to rs;
-grant connect, create table, unlimited tablespace to rs;
+grant connect, create table, create sequence, unlimited tablespace to rs;
 
 --------------------------------------------------------
 --  File created - Thursday-September-19-2019   
