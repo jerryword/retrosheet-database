@@ -11,6 +11,7 @@ create user rs identified by chadwick;
 grant read, write on directory CSV_DIR to rs;
 grant read, write on directory BBDB_DIR to rs;
 grant read, write on directory PARK_DIR to rs;
+grant read, write on directory RS_DIR to rs;
 grant connect, create table, unlimited tablespace to rs;
 
 --------------------------------------------------------
@@ -2453,6 +2454,54 @@ grant connect, create table, unlimited tablespace to rs;
            )
       LOCATION
        ( 'TeamsFranchises.csv'
+       )
+    )
+   REJECT LIMIT UNLIMITED ;
+   --------------------------------------------------------
+--  DDL for Table XT_TEAM
+--------------------------------------------------------
+
+  CREATE TABLE "RS"."XT_TEAM" 
+   (	"CURR_FRANCH_ID" VARCHAR2(4000 BYTE), 
+	"FRANCH_ID" VARCHAR2(4000 BYTE), 
+	"LEAGUE" VARCHAR2(4000 BYTE), 
+	"DIVISION" VARCHAR2(4000 BYTE), 
+	"LOCATION" VARCHAR2(4000 BYTE), 
+	"NICKNAME" VARCHAR2(4000 BYTE), 
+	"ALT_NICKNAME" VARCHAR2(128 BYTE), 
+	"FIRST_DATE" VARCHAR2(4000 BYTE), 
+	"LAST_DATE" VARCHAR2(4000 BYTE), 
+	"CITY" VARCHAR2(4000 BYTE), 
+	"STATE" VARCHAR2(4000 BYTE)
+   ) 
+   ORGANIZATION EXTERNAL 
+    ( TYPE ORACLE_LOADER
+      DEFAULT DIRECTORY "RS_DIR"
+      ACCESS PARAMETERS
+      ( records delimited BY '\r\n' 
+           NOBADFILE
+           NODISCARDFILE
+           NOLOGFILE
+           skip 1 
+           fields terminated BY ','
+           OPTIONALLY ENCLOSED BY '"' AND '"'
+           lrtrim
+           missing field VALUES are NULL
+           ( CURR_FRANCH_ID CHAR(4000),
+             FRANCH_ID CHAR(4000),
+             LEAGUE CHAR(4000),
+             DIVISION CHAR(4000),
+             LOCATION CHAR(4000),
+             NICKNAME CHAR(4000),
+             ALT_NICKNAME CHAR(4000),
+             FIRST_DATE CHAR(4000),
+             LAST_DATE CHAR(4000),
+             CITY CHAR(4000),
+             STATE CHAR(4000)
+           )
+           )
+      LOCATION
+       ( 'CurrentNames.csv'
        )
     )
    REJECT LIMIT UNLIMITED ;
