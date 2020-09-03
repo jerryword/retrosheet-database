@@ -7,3 +7,6 @@
 [submodule "retrosheet"]
 	path = retrosheet
 	url = https://github.com/jerryword/retrosheet.git
+[submodule "retrosheet-org"]
+	path = retrosheet-org
+	url = https://github.com/jerryword/retrosheet-org
