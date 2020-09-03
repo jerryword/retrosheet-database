@@ -45,7 +45,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # change memory size
   config.vm.provider "virtualbox" do |v|
-    v.memory = 4096
+    v.memory = 2048
     v.name = NAME
   end
 
@@ -84,5 +84,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder "../retrosheet-csv/", "/retrosheet-csv", mount_options: ["uid=54321", "gid=54321"]
   config.vm.synced_folder "../baseballdatabank/", "/baseballdatabank", mount_options: ["uid=54321", "gid=54321"]
   config.vm.synced_folder "../retrosheet/", "/retrosheet", mount_options: ["uid=54321", "gid=54321"]
-
+  config.vm.synced_folder "../retrosheet-org/", "/retrosheet-org", mount_options: ["uid=54321", "gid=54321"]
 end
