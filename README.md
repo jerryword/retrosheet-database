@@ -20,3 +20,5 @@
 * https://github.com/chadwickbureau/retrosheet.git  
 * http://chadwick.sourceforge.net/doc/index.html  
 * https://www.retrosheet.org  
+
+`The information used here was obtained free of charge from and is copyrighted by Retrosheet. Interested parties may contact Retrosheet at "www.retrosheet.org".`
