@@ -7,3 +7,6 @@
 [submodule "retrosheet-org"]
 	path = retrosheet-org
 	url = https://github.com/jerryword/retrosheet-org
+[submodule "baseballdatabank"]
+	path = baseballdatabank
+	url = https://github.com/jerryword/baseballdatabank
