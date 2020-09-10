@@ -20,7 +20,6 @@ grant connect, create table, unlimited tablespace to rs;
 --------------------------------------------------------
 --  DDL for Table XT_ASG_COMMENT
 --------------------------------------------------------
-
   CREATE TABLE "RS"."XT_ASG_COMMENT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"EVENT_ID" VARCHAR2(4000 BYTE), 
@@ -198,7 +197,9 @@ grant connect, create table, unlimited tablespace to rs;
 	"F_RF_A" VARCHAR2(4000 BYTE), 
 	"F_RF_E" VARCHAR2(4000 BYTE), 
 	"F_RF_DP" VARCHAR2(4000 BYTE), 
-	"F_RF_TP" VARCHAR2(4000 BYTE)
+	"F_RF_TP" VARCHAR2(4000 BYTE),
+    "filename_tx" varchar2(4000 byte),
+    "line_number_ct" varchar2(4000 byte)
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
@@ -378,7 +379,9 @@ grant connect, create table, unlimited tablespace to rs;
 	"ASS9_FLD_CD" VARCHAR2(4000 BYTE), 
 	"ASS10_FLD_CD" VARCHAR2(4000 BYTE), 
 	"UNKNOWN_OUT_EXC_FL" VARCHAR2(4000 BYTE), 
-	"UNCERTAIN_PLAY_EXC_FL" VARCHAR2(4000 BYTE)
+	"UNCERTAIN_PLAY_EXC_FL" VARCHAR2(4000 BYTE),
+    "filename_tx" varchar2(4000 byte),
+    "line_number_ct" varchar2(4000 byte)
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
@@ -577,7 +580,9 @@ grant connect, create table, unlimited tablespace to rs;
 	"HOME_LINEUP8_BAT_NAME_TX" VARCHAR2(4000 BYTE), 
 	"HOME_LINEUP9_BAT_NAME_TX" VARCHAR2(4000 BYTE), 
 	"ADD_INFO_TX" VARCHAR2(4000 BYTE), 
-	"ACQ_INFO_TX" VARCHAR2(4000 BYTE)
+	"ACQ_INFO_TX" VARCHAR2(4000 BYTE),
+    "filename_tx" varchar2(4000 byte),
+    "line_number_ct" varchar2(4000 byte)
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
@@ -607,7 +612,9 @@ grant connect, create table, unlimited tablespace to rs;
 	"SUB_FLD_CD" VARCHAR2(4000 BYTE), 
 	"REMOVED_ID" VARCHAR2(4000 BYTE), 
 	"REMOVED_FLD_CD" VARCHAR2(4000 BYTE), 
-	"EVENT_ID" VARCHAR2(4000 BYTE)
+	"EVENT_ID" VARCHAR2(4000 BYTE),
+    "filename_tx" varchar2(4000 byte),
+    "line_number_ct" varchar2(4000 byte)
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
@@ -636,7 +643,7 @@ grant connect, create table, unlimited tablespace to rs;
 	"START_DATE" VARCHAR2(4000 BYTE), 
 	"END_DATE" VARCHAR2(4000 BYTE), 
 	"LEAGUE" VARCHAR2(4000 BYTE), 
-	"NOTES" VARCHAR2(4000 BYTE)
+	"NOTES" VARCHAR2(4000 BYTE) 
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
@@ -695,7 +702,7 @@ grant connect, create table, unlimited tablespace to rs;
 	"DEBUT" VARCHAR2(4000 BYTE), 
 	"FINALGAME" VARCHAR2(4000 BYTE), 
 	"RETROID" VARCHAR2(4000 BYTE), 
-	"BBREFID" VARCHAR2(4000 BYTE)
+	"BBREFID" VARCHAR2(4000 BYTE) 
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
@@ -748,7 +755,9 @@ grant connect, create table, unlimited tablespace to rs;
   CREATE TABLE "RS"."XT_POST_COMMENT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"EVENT_ID" VARCHAR2(4000 BYTE), 
-	"COMMENT_TX" VARCHAR2(4000 BYTE)
+	"COMMENT_TX" VARCHAR2(4000 BYTE),
+    "filename_tx" varchar2(4000 byte),
+    "line_number_ct" varchar2(4000 byte)
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
@@ -922,7 +931,9 @@ grant connect, create table, unlimited tablespace to rs;
 	"F_RF_A" VARCHAR2(4000 BYTE), 
 	"F_RF_E" VARCHAR2(4000 BYTE), 
 	"F_RF_DP" VARCHAR2(4000 BYTE), 
-	"F_RF_TP" VARCHAR2(4000 BYTE)
+	"F_RF_TP" VARCHAR2(4000 BYTE),
+    "filename_tx" varchar2(4000 byte),
+    "line_number_ct" varchar2(4000 byte)
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
@@ -1102,7 +1113,9 @@ grant connect, create table, unlimited tablespace to rs;
 	"ASS9_FLD_CD" VARCHAR2(4000 BYTE), 
 	"ASS10_FLD_CD" VARCHAR2(4000 BYTE), 
 	"UNKNOWN_OUT_EXC_FL" VARCHAR2(4000 BYTE), 
-	"UNCERTAIN_PLAY_EXC_FL" VARCHAR2(4000 BYTE)
+	"UNCERTAIN_PLAY_EXC_FL" VARCHAR2(4000 BYTE),
+    "filename_tx" varchar2(4000 byte),
+    "line_number_ct" varchar2(4000 byte)
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
@@ -1301,7 +1314,9 @@ grant connect, create table, unlimited tablespace to rs;
 	"HOME_LINEUP8_BAT_NAME_TX" VARCHAR2(4000 BYTE), 
 	"HOME_LINEUP9_BAT_NAME_TX" VARCHAR2(4000 BYTE), 
 	"ADD_INFO_TX" VARCHAR2(4000 BYTE), 
-	"ACQ_INFO_TX" VARCHAR2(4000 BYTE)
+	"ACQ_INFO_TX" VARCHAR2(4000 BYTE),
+    "filename_tx" varchar2(4000 byte),
+    "line_number_ct" varchar2(4000 byte)
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
@@ -1331,7 +1346,9 @@ grant connect, create table, unlimited tablespace to rs;
 	"SUB_FLD_CD" VARCHAR2(4000 BYTE), 
 	"REMOVED_ID" VARCHAR2(4000 BYTE), 
 	"REMOVED_FLD_CD" VARCHAR2(4000 BYTE), 
-	"EVENT_ID" VARCHAR2(4000 BYTE)
+	"EVENT_ID" VARCHAR2(4000 BYTE),
+    "filename_tx" varchar2(4000 byte),
+    "line_number_ct" varchar2(4000 byte)
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
@@ -1354,7 +1371,9 @@ grant connect, create table, unlimited tablespace to rs;
   CREATE TABLE "RS"."XT_REG_COMMENT" 
    (	"GAME_ID" VARCHAR2(4000 BYTE), 
 	"EVENT_ID" VARCHAR2(4000 BYTE), 
-	"COMMENT_TX" VARCHAR2(4000 BYTE)
+	"COMMENT_TX" VARCHAR2(4000 BYTE),
+    "filename_tx" varchar2(4000 byte),
+    "line_number_ct" varchar2(4000 byte)
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
@@ -1528,7 +1547,9 @@ grant connect, create table, unlimited tablespace to rs;
 	"F_RF_A" VARCHAR2(4000 BYTE), 
 	"F_RF_E" VARCHAR2(4000 BYTE), 
 	"F_RF_DP" VARCHAR2(4000 BYTE), 
-	"F_RF_TP" VARCHAR2(4000 BYTE)
+	"F_RF_TP" VARCHAR2(4000 BYTE),
+    "filename_tx" varchar2(4000 byte),
+    "line_number_ct" varchar2(4000 byte)
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
@@ -1702,7 +1723,9 @@ grant connect, create table, unlimited tablespace to rs;
 	"F_RF_A" VARCHAR2(4000 BYTE), 
 	"F_RF_E" VARCHAR2(4000 BYTE), 
 	"F_RF_DP" VARCHAR2(4000 BYTE), 
-	"F_RF_TP" VARCHAR2(4000 BYTE)
+	"F_RF_TP" VARCHAR2(4000 BYTE),
+    "filename_tx" varchar2(4000 byte),
+    "line_number_ct" varchar2(4000 byte)
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
@@ -1876,7 +1899,9 @@ grant connect, create table, unlimited tablespace to rs;
 	"F_RF_A" VARCHAR2(4000 BYTE), 
 	"F_RF_E" VARCHAR2(4000 BYTE), 
 	"F_RF_DP" VARCHAR2(4000 BYTE), 
-	"F_RF_TP" VARCHAR2(4000 BYTE)
+	"F_RF_TP" VARCHAR2(4000 BYTE),
+    "filename_tx" varchar2(4000 byte),
+    "line_number_ct" varchar2(4000 byte)
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
@@ -2056,7 +2081,9 @@ grant connect, create table, unlimited tablespace to rs;
 	"ASS9_FLD_CD" VARCHAR2(4000 BYTE), 
 	"ASS10_FLD_CD" VARCHAR2(4000 BYTE), 
 	"UNKNOWN_OUT_EXC_FL" VARCHAR2(4000 BYTE), 
-	"UNCERTAIN_PLAY_EXC_FL" VARCHAR2(4000 BYTE)
+	"UNCERTAIN_PLAY_EXC_FL" VARCHAR2(4000 BYTE),
+    "filename_tx" varchar2(4000 byte),
+    "line_number_ct" varchar2(4000 byte)
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
@@ -2255,7 +2282,9 @@ grant connect, create table, unlimited tablespace to rs;
 	"HOME_LINEUP8_BAT_NAME_TX" VARCHAR2(4000 BYTE), 
 	"HOME_LINEUP9_BAT_NAME_TX" VARCHAR2(4000 BYTE), 
 	"ADD_INFO_TX" VARCHAR2(4000 BYTE), 
-	"ACQ_INFO_TX" VARCHAR2(4000 BYTE)
+	"ACQ_INFO_TX" VARCHAR2(4000 BYTE),
+    "filename_tx" varchar2(4000 byte),
+    "line_number_ct" varchar2(4000 byte)
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
@@ -2285,7 +2314,9 @@ grant connect, create table, unlimited tablespace to rs;
 	"SUB_FLD_CD" VARCHAR2(4000 BYTE), 
 	"REMOVED_ID" VARCHAR2(4000 BYTE), 
 	"REMOVED_FLD_CD" VARCHAR2(4000 BYTE), 
-	"EVENT_ID" VARCHAR2(4000 BYTE)
+	"EVENT_ID" VARCHAR2(4000 BYTE),
+    "filename_tx" varchar2(4000 byte),
+    "line_number_ct" varchar2(4000 byte)
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
@@ -2309,7 +2340,7 @@ grant connect, create table, unlimited tablespace to rs;
    (	"FRANCHID" VARCHAR2(4000 BYTE), 
 	"FRANCHNAME" VARCHAR2(4000 BYTE), 
 	"ACTIVE" VARCHAR2(4000 BYTE), 
-	"NAASSOC" VARCHAR2(4000 BYTE)
+	"NAASSOC" VARCHAR2(4000 BYTE)  
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
@@ -2350,7 +2381,7 @@ grant connect, create table, unlimited tablespace to rs;
 	"FIRST_DATE" VARCHAR2(4000 BYTE), 
 	"LAST_DATE" VARCHAR2(4000 BYTE), 
 	"CITY" VARCHAR2(4000 BYTE), 
-	"STATE" VARCHAR2(4000 BYTE)
+	"STATE" VARCHAR2(4000 BYTE) 
    ) 
    ORGANIZATION EXTERNAL 
     ( TYPE ORACLE_LOADER
