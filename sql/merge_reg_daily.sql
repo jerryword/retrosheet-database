@@ -1,4 +1,3 @@
-drop table reg_daily purge;
 /*
 This script will merge the regular season daily EVX, EDX, and EBX tables
 in the correct order for accurate counts.
@@ -1135,8 +1134,6 @@ ebx.F_RF_TP,
 ebx.filename_tx,
 ebx.line_number_ct
 );
-
-
 
 commit;
 
